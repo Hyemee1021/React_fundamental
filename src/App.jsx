@@ -1,18 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "../src/components/Header";
+import useCatFact from "./presenter/useCatfacts";
 import Home from "../src/components/Home";
 
 function App() {
-  return (
-    <BrowserRouter>
-      {/* header is on evry pages */}
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  const { fact, error, loading } = useCatFact();
+
+  if (loading) {
+    return <div> "Please wait..."</div>;
+  }
+  if (error) {
+    return <div> "Error..."</div>;
+  }
+
+  return <div>{fact}</div>;
 }
 
 export default App;
