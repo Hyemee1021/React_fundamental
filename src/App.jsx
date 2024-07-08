@@ -1,19 +1,19 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useCatFact from "./presenter/useCatfacts";
-import Home from "../src/components/Home";
+import { fetchCatfact } from "./services/catfactProvider";
 
 function App() {
-  const { fact, error, loading } = useCatFact();
+  const { fact, error, loading } = useCatFact(fetchCatfact);
 
-  if (loading) {
-    return <div> "Please wait..."</div>;
-  }
-  if (error) {
-    return <div> "Error..."</div>;
-  }
-
-  return <div>{fact}</div>;
+  return (
+    <main>
+      {loading && <p className="text-center my-7 text-2xl"> Loading...</p>}
+      {error && (
+        <p className="text-center my-7 text-2xl">
+          There is something wrong...{error.message}
+        </p>
+      )}
+      {fact && !loading && !error && <p> {fact}</p>}
+    </main>
+  );
 }
-
 export default App;
