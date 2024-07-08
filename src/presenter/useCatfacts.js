@@ -16,7 +16,10 @@ function useCatFact(fetchCatfact) {
       setLoading(false);
     }
   };
-
+  function getFresh() {
+    setLoading(true);
+    getFact();
+  }
   useEffect(() => {
     getFact();
   }, [fetchCatfact]);
@@ -25,7 +28,7 @@ function useCatFact(fetchCatfact) {
   // Dependency on fetchCatfact function
 
   // Return the state values for external use
-  return { fact, error, loading };
+  return { fact, error, loading, getFresh };
 }
 
 export default useCatFact;
