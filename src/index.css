@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
+body .bg-white {
   background-color: rgb(241, 245, 241);
+}
+body .bg-black {
+  background-color: rgb(32, 32, 32);
+  color: aliceblue;
 }

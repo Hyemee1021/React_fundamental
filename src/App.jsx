@@ -1,11 +1,22 @@
 import useCatFact from "./presenter/useCatfacts";
 import { fetchCatfact } from "./services/catfactProvider";
-
+import ContrastIcon from "@mui/icons-material/Contrast";
+import { useContext } from "react";
+import { ThemeContext } from "./components/ThemeContext";
 function App() {
   const { fact, error, loading, getFresh } = useCatFact(fetchCatfact);
 
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  console.log(toggleTheme);
   return (
-    <main className="p-3 max-w-lg mx-auto  ">
+    <div
+      className={`p-3 max-w-lg mx-auto ${
+        theme === "light" ? "bg-white" : "bg-black"
+      }`}
+    >
+      <div>
+        <ContrastIcon onClick={toggleTheme} />
+      </div>
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-center my-7">Cat Fact</h1>
         {loading && <p className="text-center my-7 text-2xl"> Loading...</p>}
@@ -22,7 +33,7 @@ function App() {
           Refresh
         </button>
       </div>
-    </main>
+    </div>
   );
 }
 export default App;
