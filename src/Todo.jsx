@@ -25,6 +25,7 @@ const Todo = () => {
     setFeedback("Todo is deleted.");
     setTimeout(() => setFeedback(""), 3000);
   };
+
   return (
     <div className=" m-3 p-4 mx-auto max-w-lg bg-slate-200">
       <div className=" flex items-center justify-center mx-auto gap-4">
@@ -81,7 +82,10 @@ const Todo = () => {
                   <td className="  px-4 py-4 text-sm text-gray-900">
                     {item.message}
                   </td>
-                  <td className="    px-4 py-4 text-sm text-gray-900">
+                  <td
+                    onClick={}
+                    className="  cursor-pointer hover:text-red-600  px-4 py-4 text-sm text-gray-900"
+                  >
                     {item.completed ? "o" : "x"}
                   </td>
                   <td className="px-4 py-4 text-sm text-gray-900">
