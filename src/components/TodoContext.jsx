@@ -39,6 +39,7 @@ export const TodoProvider = ({ children }) => {
     setList((prevList) => prevList.filter((todo) => todo.Id !== Id));
   };
 
+  //function to change
   // Provide Context Values:
   return (
     <TodoContext.Provider value={{ toggleTodo, addList, delteTodo, list }}>

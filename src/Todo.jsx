@@ -17,15 +17,20 @@ const Todo = () => {
     addList(message);
     setMessage("");
     setFeedback("Todo added successfully!");
-    setTimeout(() => setFeedback(""), 3000);
+    setTimeout(() => setFeedback(""), 1000);
   };
 
   const handleDelete = (Id) => {
     delteTodo(Id);
     setFeedback("Todo is deleted.");
-    setTimeout(() => setFeedback(""), 3000);
+    setTimeout(() => setFeedback(""), 1000);
   };
 
+  const handleToggle = (Id) => {
+    toggleTodo(Id);
+    setFeedback("Completion is changed.");
+    setTimeout(() => setFeedback(""), 1000);
+  };
   return (
     <div className=" m-3 p-4 mx-auto max-w-lg bg-slate-200">
       <div className=" flex items-center justify-center mx-auto gap-4">
@@ -83,7 +88,7 @@ const Todo = () => {
                     {item.message}
                   </td>
                   <td
-                    onClick={}
+                    onClick={() => handleToggle(item.Id)}
                     className="  cursor-pointer hover:text-red-600  px-4 py-4 text-sm text-gray-900"
                   >
                     {item.completed ? "o" : "x"}
